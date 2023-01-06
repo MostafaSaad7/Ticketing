@@ -5,6 +5,16 @@ interface UserAttrs {
     password: string;
 }
 
+
+interface userModel extends mongoose.Model<UserDoc> {
+    build(attrs: UserAttrs): UserDoc;
+}
+
+interface UserDoc extends mongoose.Document {
+    email: string;
+    password: string;
+}
+
 const userSchema = new mongoose.Schema({
 
     email: {
@@ -17,11 +27,10 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-const User = mongoose.model('User', userSchema);
-
-const buildUser = (attrs: UserAttrs) => {
+userSchema.statics.build = (attrs: UserAttrs) => {
     return new User(attrs);
 }
 
+const User = mongoose.model<UserDoc,userModel>('User', userSchema);
 
-export { User, buildUser };
+export { User };
