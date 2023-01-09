@@ -1,11 +1,12 @@
-import mongoose, { Collection, mongo } from "mongoose";
+import mongoose, { Collection} from "mongoose";
 import {MongoMemoryServer} from "mongodb-memory-server"
 import { app } from "../app";
 let mongo:any;
 beforeAll(async ()=>{
+    process.env.JWT_KEY='saad';
+    process.env.NODE_ENV='test';
     mongo = await MongoMemoryServer.create();
     const mongoUri = mongo.getUri();
-    console.log(mongoUri);
     await mongoose.connect(mongoUri, {});
 
 });

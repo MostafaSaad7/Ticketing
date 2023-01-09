@@ -6,7 +6,8 @@ const start= async()=>{
         throw new Error('JWT_KEY must be defined');
     }
     try{
-     
+        
+    
    await mongoose.connect('mongodb://auth-mongo-srv:27017/auth')
     }
     catch(err){
@@ -16,5 +17,4 @@ const start= async()=>{
         console.log('Listening on port 3000!!!');
     });
 }
-
 start();
