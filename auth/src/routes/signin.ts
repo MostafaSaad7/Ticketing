@@ -1,9 +1,8 @@
 import express from "express";
 import { body, validationResult } from "express-validator";
 import { Request, Response } from "express";
-import { validateRequest } from "../middlewares/validate-request";
+import { validateRequest,BadRequestError } from "@ms-shared-ticketing/common";
 import { User } from "../models/user";
-import { BadRequestError } from "../errors/bad-request-error";
 import { Password } from "../services/password";
 import jwt from "jsonwebtoken";
 

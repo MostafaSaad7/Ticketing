@@ -1,10 +1,10 @@
 import express from 'express';
 import { Request, Response } from "express";
 import { body, validationResult } from "express-validator";
-import { BadRequestError } from '../errors/bad-request-error';
+import { BadRequestError } from '@ms-shared-ticketing/common';
 import { User } from '../models/user';
 import  jwt  from 'jsonwebtoken';
-import { validateRequest } from '../middlewares/validate-request';
+import { validateRequest } from '@ms-shared-ticketing/common';
 
 
 const router = express.Router();
