@@ -1,17 +1,17 @@
 {
   "name": "@ms-shared-ticketing/common",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "files": [
-  "build/**/*"
-],
+    "build/**/*"
+  ],
   "scripts": {
-    
     "build": "npm run clean && tsc",
-    "clean": "del-cli ./build/*"
-    },
+    "clean": "del-cli ./build/*",
+    "pub": "git add . && git commit -m \"New Updates to package \" &&npm version patch && npm run build && npm publish"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
