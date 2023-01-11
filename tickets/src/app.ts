@@ -11,6 +11,7 @@ import {createTicketRouter} from './routes/new';
 
 // Error Handlers 
 import { errorHandler,NotFoundError } from '@ms-shared-ticketing/common';
+import { showTicketRouter } from './routes/show';
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(cookieSession({
 
 app.use(currentUser);
 app.use(createTicketRouter);
+app.use(showTicketRouter);
  
 app.all('*', async (req, res) => {
     throw new NotFoundError();
