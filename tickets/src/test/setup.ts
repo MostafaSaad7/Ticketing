@@ -1,4 +1,4 @@
-import mongoose, { Collection} from "mongoose";
+import mongoose from "mongoose";
 import {MongoMemoryServer} from "mongodb-memory-server"
 import request from "supertest";
 import { app } from "../app";
@@ -50,7 +50,4 @@ global.signin = async () => {
     const cookie= response.get('Set-Cookie');
 
     return cookie;
-    
-    
-
 };
