@@ -71,7 +71,7 @@ it('Create tickets with a valid inputs ',async ()=>{
     post('/api/tickets').
     set('Cookie',global.signin()).
     send({
-        title:'adsdasdas',
+        title:'my ticket',
         price:10,
     })
     .expect(201);
