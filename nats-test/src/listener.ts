@@ -14,11 +14,13 @@ stan.on('close',()=>{ // close event
     process.exit();
 });
 
-const subscriptionOptions=stan.subscriptionOptions().setManualAckMode(true); // set manual ack mode
+const subscriptionOptions=stan.subscriptionOptions()
+.setManualAckMode(true)
+.setDeliverAllAvailable(); // set manual ack mode
 
 stan.on('connect',()=>{
     console.log('Listener connected to NATS');
-    const subscription=stan.subscribe('ticket:created','orders-service-queue-group',subscriptionOptions); // subscribe to channel (topic) ticket:created
+    const subscription=stan.subscribe('ticket:created',subscriptionOptions); // subscribe to channel (topic) ticket:created
     subscription.on('message',(msg:Message)=>{
         console.log('Message received');
         console.log(`Received event # ${msg.getSequence()} with message data: ${msg.getData()}`);
