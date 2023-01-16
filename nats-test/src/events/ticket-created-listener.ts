@@ -13,12 +13,4 @@ export class TicketCreatedListener extends Listener {
 
     }
 
-    // constructor(client: Stan, subject?: string, queueGroupName?: string) {
-    //     super(client);
-    //     if (subject)
-    //         this.subject = subject;
-    //     if (queueGroupName)
-    //         this.queueGroupName = queueGroupName;
-    // }
-
 }
