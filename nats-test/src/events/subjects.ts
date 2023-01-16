@@ -4,3 +4,4 @@ export enum Subjects {
     OrderUpdated = 'order:updated'
 
 }
+
