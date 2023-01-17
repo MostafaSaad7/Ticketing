@@ -15,7 +15,7 @@ it('returns a 404 if the ticket is not found', async () => {
 
 it('returns the ticket if the ticket is found', async () => {
     let title = 'Hello ';
-    let price=12;
+    let price = 12;
 
     const response = await request(app)
         .post('/api/tickets')
@@ -25,12 +25,12 @@ it('returns the ticket if the ticket is found', async () => {
             price
         }).expect(201);
 
-  
+
     const ticketResponse = await request(app)
         .get(`/api/tickets/${response.body.id}`)
         .send()
         .expect(200);
-        expect(ticketResponse.body.title).toEqual(title);
-        expect(ticketResponse.body.price).toEqual(price);
+    expect(ticketResponse.body.title).toEqual(title);
+    expect(ticketResponse.body.price).toEqual(price);
 
-    });
+});
