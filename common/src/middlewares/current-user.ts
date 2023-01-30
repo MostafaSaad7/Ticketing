@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 interface UserPayload {
@@ -6,7 +6,6 @@ interface UserPayload {
     email: string;
 }
 
-// Augmenting existing types with new properties or methods 
 declare global {
     namespace Express {
         interface Request {
@@ -15,15 +14,22 @@ declare global {
     }
 }
 
-
-export const currentUser = (req: Request, res: Response, next: NextFunction) => {
-    if (!req.session?.jwt) { // if there is no session or no jwt
+export const currentUser = (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    if (!req.session?.jwt) {
         return next();
     }
+
     try {
-        const payload = jwt.verify(req.session!.jwt, process.env.JWT_KEY!) as UserPayload;
+        const payload = jwt.verify(
+            req.session.jwt,
+            process.env.JWT_KEY!
+        ) as UserPayload;
         req.currentUser = payload;
-    }
-    catch (err) { }
+    } catch (err) { }
+
     next();
-}
+};
