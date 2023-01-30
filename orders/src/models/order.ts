@@ -3,6 +3,7 @@ import { OrderStatus } from "@ms-shared-ticketing/common";
 import { TicketDoc } from "./ticket";
 
 
+export { OrderStatus };
 interface OrderAttrs {
     // version: number;
     userId: string;
