@@ -2,12 +2,6 @@ import express, { Request, Response } from 'express';
 import { requireAuth, validateRequest } from '@ms-shared-ticketing/common';
 import { body } from 'express-validator';
 
-
-
-
-
-
-
 const router = express.Router();
 
 router.post('/api/orders', requireAuth,
