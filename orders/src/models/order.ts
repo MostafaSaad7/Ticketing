@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { OrderStatus } from "@ms-shared-ticketing/common";
+import { TicketDoc } from "./ticket";
 
 
 interface OrderAttrs {
@@ -7,7 +8,7 @@ interface OrderAttrs {
     userId: string;
     // price: number;
     status: OrderStatus;
-    ticket: ticketDoc;
+    ticket: TicketDoc;
     expiresAt: Date;
 }
 
@@ -16,7 +17,7 @@ interface OrderDoc extends mongoose.Document {
     userId: string;
     // price: number;
     status: OrderStatus;
-    ticket: ticketDoc;
+    ticket: TicketDoc;
     expiresAt: Date;
 }
 
@@ -61,3 +62,5 @@ orderSchema.statics.build = (attrs: OrderAttrs) => {
 }
 
 const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema);
+
+export { Order };
