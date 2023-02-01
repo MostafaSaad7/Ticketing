@@ -1,10 +1,11 @@
 import express, { Request, Response } from 'express';
-import { BadRequestError, NotFoundError, OrderStatus, requireAuth, validateRequest } from '@ms-shared-ticketing/common';
+import { BadRequestError, NotFoundError, requireAuth, validateRequest } from '@ms-shared-ticketing/common';
 import { body } from 'express-validator';
 import { Order } from '../models/order';
 import { Ticket } from '../models/ticket';
 import { OrderCreatedPublisher } from '../events/publishers/order-created-publisher';
 import { natsWrapper } from '../nats-wrapper';
+import { OrderStatus } from '@ms-shared-ticketing/common';
 
 
 const router = express.Router();
