@@ -9,7 +9,7 @@ import { natsWrapper } from "../../nats-wrapper";
 
 
 it('returns a 404 if the ticket is not found', async () => {
-    const ticketId = new mongoose.Types.ObjectId();
+    const ticketId = global.generateId();
 
     await request(app)
         .post('/api/orders')
@@ -22,6 +22,7 @@ it('returns a 404 if the ticket is not found', async () => {
 
 it('returns an error if the ticket is already reserved', async () => {
     const ticket = Ticket.build({
+        id: global.generateId(),
         title: 'concert',
         price: 20
     });
@@ -43,6 +44,7 @@ it('returns an error if the ticket is already reserved', async () => {
 
 it('reserves a ticket', async () => {
     const ticket = Ticket.build({
+        id: global.generateId(),
         title: 'concert',
         price: 20
     });
@@ -59,6 +61,7 @@ it('reserves a ticket', async () => {
 it('emits an order created event', async () => {
 
     const ticket = Ticket.build({
+        id: global.generateId(),
         title: 'concert',
         price: 20
     });

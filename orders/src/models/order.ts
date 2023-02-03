@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { OrderStatus } from "@ms-shared-ticketing/common";
 import { TicketDoc } from "./ticket";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 
 export { OrderStatus };
@@ -16,10 +17,10 @@ interface OrderAttrs {
 interface OrderDoc extends mongoose.Document {
     version: number;
     userId: string;
-    // price: number;
     status: OrderStatus;
     ticket: TicketDoc;
     expiresAt: Date;
+    // price: number;
 
 }
 
@@ -59,6 +60,7 @@ const orderSchema = new mongoose.Schema({
     });
 
 orderSchema.set('versionKey', 'version');
+orderSchema.plugin(updateIfCurrentPlugin);
 // // orderSchema.pre('save', function (done) {
 // //     // @ts-ignore
 // //     this.$where = {
