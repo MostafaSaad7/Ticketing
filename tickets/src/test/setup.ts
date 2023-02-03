@@ -5,7 +5,8 @@ import { app } from "../app";
 import jwt from 'jsonwebtoken';
 
 declare global {
-    var signin: () => string[]
+    var signin: () => string[];
+    var generateId: () => string
 
 
 }
@@ -65,3 +66,6 @@ global.signin = () => {
 
 
 };
+global.generateId = () => {
+    return new mongoose.Types.ObjectId().toHexString();
+}
