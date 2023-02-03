@@ -1,7 +1,7 @@
 import { OrderCreatedEvent, Listener, Subjects } from "@ms-shared-ticketing/common";
 import { Message } from "node-nats-streaming";
 import { Ticket } from "../../models/tickets";
-import { TicketUpdatedPublisher } from "../publisher/tickets-updated-publisher";
+import { TicketUpdatedPublisher } from "../publisher/ticket-updated-publisher";
 import { queueGroupName } from "./queue-group-name";
 
 

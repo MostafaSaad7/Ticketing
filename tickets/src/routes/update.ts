@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { requireAuth, validateRequest, NotFoundError, NotAuthorizedError } from '@ms-shared-ticketing/common';
 import { Ticket } from '../models/tickets';
-import { TicketUpdatedPublisher } from '../events/publisher/tickets-updated-publisher';
+import { TicketUpdatedPublisher } from '../events/publisher/ticket-updated-publisher';
 import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();

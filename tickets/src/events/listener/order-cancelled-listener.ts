@@ -2,7 +2,7 @@ import { Listener, OrderCancelledEvent, Subjects } from '@ms-shared-ticketing/co
 import { Message } from 'node-nats-streaming';
 import { queueGroupName } from './queue-group-name';
 import { Ticket } from '../../models/tickets';
-import { TicketUpdatedPublisher } from '../publisher/tickets-updated-publisher';
+import { TicketUpdatedPublisher } from '../publisher/ticket-updated-publisher';
 
 export class OrderCancelledListener extends Listener<OrderCancelledEvent> {
 
