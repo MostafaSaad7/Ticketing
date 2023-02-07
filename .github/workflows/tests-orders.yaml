@@ -4,7 +4,10 @@ name: tests-orders
 # when you want to run this workflow
 
 on:
-  pull_request
+# when a pull request is created or updated and the path is orders/** (any file in the auth folder)
+  pull_request:
+    paths:
+      - 'orders/**'
 jobs:
   build:
     runs-on: ubuntu-latest

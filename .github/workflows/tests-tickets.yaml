@@ -4,7 +4,10 @@ name: tests-tickets
 # when you want to run this workflow
 
 on:
-  pull_request
+# when a pull request is created or updated and the path is tickets/** (any file in the auth folder)
+  pull_request:
+    paths:
+      - 'tickets/**'
 jobs:
   build:
     runs-on: ubuntu-latest
