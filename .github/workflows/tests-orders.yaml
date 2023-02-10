@@ -1,0 +1,16 @@
+# name of the file
+name: tests-orders
+
+# when you want to run this workflow
+
+on:
+# when a pull request is created or updated and the path is orders/** (any file in the auth folder)
+  pull_request:
+    paths:
+      - 'orders/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd orders && npm install && npm run test:ci
