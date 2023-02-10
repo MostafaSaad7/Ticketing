@@ -4,7 +4,7 @@ name: tests-tickets
 # when you want to run this workflow
 
 on:
-# when a pull request is created or updated and the path is tickets/** (any file in the auth folder)
+# when a pull request is created or updated and the path is tickets/** (any file in the orders folder)
   pull_request:
     paths:
       - 'tickets/**'
