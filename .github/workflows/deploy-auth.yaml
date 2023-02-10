@@ -1,22 +1,20 @@
 name: deploy-auth
 
-
 on:
   push:
-    branches: 
-      - master
-    paths: 
+    branches:
+      - main
+    paths:
       - 'auth/**'
-
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd auth && docker build -t mostafasaad/auth .
-      - run: docker login -u $DOCKER_USERNAME -P $DOCKER_PASSWORD
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
-          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
-          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: cd auth && docker build -t cygnetops/auth .
       - run: docker push mostafasaad/auth
