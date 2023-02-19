@@ -10,4 +10,8 @@ export enum Subjects {
     // Expiration service events
     ExpirationComplete = 'expiration:complete',
 
+    // Payment service events
+    PaymentCreated = 'payment:created',
+
+
 }

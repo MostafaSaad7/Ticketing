@@ -28,3 +28,7 @@ export * from './events/types/order-status';
 
 // Expiration service events
 export * from './events/expiration-complete-event';
+
+
+// Payment service events
+export * from './events/payment-created-event';
