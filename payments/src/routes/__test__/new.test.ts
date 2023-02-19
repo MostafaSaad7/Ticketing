@@ -4,6 +4,7 @@ import { Order } from "../../models/orders";
 import { OrderStatus } from "@ms-shared-ticketing/common";
 import { response } from "express";
 import { stripe } from '../../stripe'
+import { Payment } from "../../models/payments";
 
 
 jest.mock('../../stripe');
@@ -58,7 +59,7 @@ it('returns a 400 when purchasing a cancelled order', async () => {
         })
         .expect(400);
 });
-it('returns a 204 with valid inputs ', async () => {
+it('returns a 201 with valid inputs ', async () => {
     const userId = global.generateId();
     const order = Order.build({
         id: global.generateId(),
@@ -83,6 +84,12 @@ it('returns a 204 with valid inputs ', async () => {
     expect(chargeOptions.amount).toEqual(20 * 100);
     expect(chargeOptions.currency).toEqual('usd');
 
+    const payment = await Payment.findOne({
+        orderId: order.id
+    });
+
+    expect(payment).not.toBeNull();
 });
+
 
 
