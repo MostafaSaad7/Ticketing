@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
 import { requireAuth, validateRequest, BadRequestError, NotFoundError, NotAuthorizedError, OrderStatus } from '@ms-shared-ticketing/common';
 import { Order } from '../models/orders';
+import { stripe } from '../stripe';
 
 
 const router = express.Router();
@@ -25,6 +26,12 @@ router.post('/api/payments', requireAuth, [
     if (order.status === OrderStatus.Cancelled) {
         throw new BadRequestError('Cannot pay for an cancelled order');
     }
+
+    await stripe.charges.create({
+        currency: 'usd',
+        amount: order.price * 100,
+        source: token
+    });
 
 
     res.status(201).send({ success: true });
