@@ -4,7 +4,6 @@ import { requireAuth, validateRequest, BadRequestError, NotFoundError, NotAuthor
 import { Order } from '../models/orders';
 import { stripe } from '../stripe';
 
-
 const router = express.Router();
 
 
@@ -36,6 +35,7 @@ router.post('/api/payments', requireAuth, [
 
     res.status(201).send({ success: true });
 });
+
 
 
 export { router as createChargeRouter };
