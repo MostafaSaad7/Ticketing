@@ -6,6 +6,7 @@ export interface PaymentCreatedEvent {
     data: {
         id: string;
         orderId: string;
+        // Future Fields
         stripeId: string;
     };
 }
